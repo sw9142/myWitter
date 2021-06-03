@@ -5,7 +5,7 @@ import Home from "../routes/Home";
 import Nav from "../routes/Nav";
 import Profile from "../routes/Profile";
 
-export default function AppRouter({ isLoggedIn }) {
+export default function AppRouter({ isLoggedIn, UserInfo }) {
   return (
     <Router>
       {isLoggedIn && <Nav />}
@@ -14,7 +14,7 @@ export default function AppRouter({ isLoggedIn }) {
         {isLoggedIn ? (
           <>
             <Route exact path="/">
-              <Home />
+              <Home UserInfo={UserInfo} />
             </Route>
             <Route exact path="/profile">
               <Profile />

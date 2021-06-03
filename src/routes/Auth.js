@@ -6,6 +6,7 @@ export default function Auth() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [NewUser, setNewUser] = useState(true);
+  const [Msg, setMsg] = useState("");
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -19,8 +20,10 @@ export default function Auth() {
   const onSubmitHandler = async (e) => {
     let data;
     e.preventDefault();
+
     try {
       if (NewUser) {
+        setNewUser(false);
         data = await authService.createUserWithEmailAndPassword(
           Email,
           Password
@@ -29,10 +32,11 @@ export default function Auth() {
         data = await authService.signInWithEmailAndPassword(Email, Password);
       }
 
-      console.log("data: ", data);
+      console.log("newUer?: ", NewUser);
     } catch (err) {
       if (err) {
-        console.log(err);
+        console.log("err: ", err);
+        setMsg(err.message);
       }
     }
   };
@@ -43,17 +47,15 @@ export default function Auth() {
 
     if (name === "google") {
       provider = new firebaseInstance.auth.GoogleAuthProvider();
-      console.log("provider: ", provider);
     } else if (name === "github") {
-      console.log("provider: ", provider);
       provider = new firebaseInstance.auth.GithubAuthProvider();
     }
-    const data = await authService.signInWithPopup(provider);
-    console.log("data: ", data);
+    await authService.signInWithPopup(provider);
   };
   return (
     <>
       Auth Page
+      <div style={{ color: "red", fontSize: "0.9rem" }}>{Msg}</div>
       <form onSubmit={onSubmitHandler}>
         <input
           type="text"
