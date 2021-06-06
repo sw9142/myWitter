@@ -4,6 +4,7 @@ import { authService } from "../fbase";
 
 export default function Profile({ UserInfo, refreshUser }) {
   const [ProfileUpdate, setProfileUpdate] = useState(UserInfo.displayName);
+  console.log("UserInfo.displayName in Profile: ", UserInfo.displayName);
 
   const history = useHistory();
   const onLogout = () => {
@@ -25,15 +26,31 @@ export default function Profile({ UserInfo, refreshUser }) {
   };
 
   return (
-    <>
+    <div className="container">
       {UserInfo.displayName}'s Profile Page
       <>
-        <form>
-          <input type="text" value={ProfileUpdate} onChange={onUpdateProfile} />
-          <button onClick={onUpdateSubmit}>Update Profile</button>
+        <form className="profileForm">
+          <input
+            type="text"
+            value={ProfileUpdate}
+            onChange={onUpdateProfile}
+            autoFocus
+            className="formInput"
+          />
+          <button
+            onClick={onUpdateSubmit}
+            className="formBtn"
+            style={{
+              marginTop: 10,
+            }}
+          >
+            Update Profile
+          </button>
         </form>
       </>
-      <button onClick={onLogout}>Logout</button>
-    </>
+      <button className="formBtn cancelBtn logOut" onClick={onLogout}>
+        Logout
+      </button>
+    </div>
   );
 }

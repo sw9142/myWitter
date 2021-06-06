@@ -3,20 +3,18 @@ import AppRouter from "./Router";
 import { authService } from "../fbase";
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState(authService.currentUser);
   const [Init, setInit] = useState(false);
   const [UserInfo, setUserInfo] = useState(null);
+
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
-        setisLoggedIn(true);
         setUserInfo({
           uid: user.uid,
           displayName: user.displayName,
           updateProfile: (arg) => user.updateProfile(arg),
         });
       } else {
-        setisLoggedIn(false);
         setUserInfo(null);
       }
       setInit(true);
@@ -36,7 +34,7 @@ function App() {
     <>
       {Init ? (
         <AppRouter
-          isLoggedIn={isLoggedIn}
+          isLoggedIn={Boolean(UserInfo)}
           UserInfo={UserInfo}
           refreshUser={refreshUser}
         />
