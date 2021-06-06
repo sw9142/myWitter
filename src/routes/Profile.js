@@ -27,7 +27,11 @@ export default function Profile({ UserInfo, refreshUser }) {
 
   return (
     <div className="container">
-      {UserInfo.displayName}'s Profile Page
+      <div className="profileTitle">
+        {" "}
+        {UserInfo.displayName}'s Profile Page{" "}
+      </div>
+
       <>
         <form className="profileForm">
           <input

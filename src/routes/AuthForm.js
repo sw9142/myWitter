@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { authService } from "../fbase";
 
-function AuthForm() {
+function AuthForm({ msg }) {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [NewUser, setNewUser] = useState(true);
   const [Msg, setMsg] = useState("");
+
+  useEffect(() => {
+    setMsg(msg);
+  }, []);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;

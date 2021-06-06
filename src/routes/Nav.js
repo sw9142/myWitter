@@ -10,7 +10,7 @@ function Nav({ UserInfo }) {
     <div>
       <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
         <li>
-          <Link to="/" style={{ marginRight: 10 }}>
+          <Link to="/" style={{ width: "50px" }}>
             <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
           </Link>
         </li>
@@ -22,11 +22,13 @@ function Nav({ UserInfo }) {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              width: "50px",
               fontSize: 12,
             }}
           >
             <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
-            <span style={{ marginTop: 10 }}>
+
+            <span style={{ marginTop: 10, textAlign: "center" }}>
               {UserInfo.displayName
                 ? `${UserInfo.displayName}의 Profile`
                 : "Profile"}

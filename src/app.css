@@ -57,7 +57,7 @@ form {
 .formBtn {
   cursor: pointer;
   width: 100%;
-  padding: 7px 20px;
+  padding: 9px 20px;
   text-align: center;
   color: white;
   border-radius: 20px;
@@ -71,6 +71,10 @@ form {
 }
 
 /* Profile Page */
+
+.profileTitle {
+  padding: 0.4rem;
+}
 
 .profileForm {
   border-bottom: 1px solid rgba(255, 255, 255, 0.9);
@@ -276,4 +280,9 @@ form {
   display: block;
   font-size: 12px;
   text-decoration: underline;
+}
+
+.footer {
+  position: absolute;
+  height: 100%;
 }

@@ -41,7 +41,6 @@ function App() {
       ) : (
         "Loading..."
       )}
-      <footer>&copy; Naomi Choi_myWitter {new Date().getFullYear()}</footer>
     </>
   );
 }

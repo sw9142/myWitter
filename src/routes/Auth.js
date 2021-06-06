@@ -10,6 +10,7 @@ import {
 import AuthForm from "./AuthForm";
 
 export default function Auth() {
+  const [msg, setmsg] = useState("");
   const onSocialHandler = async (e) => {
     let provider;
     const { name } = e.target;
@@ -21,6 +22,7 @@ export default function Auth() {
     }
     await authService.signInWithPopup(provider).catch((err) => {
       console.log("Err: ", err);
+      setmsg(err.message);
     });
   };
   return (
@@ -32,7 +34,7 @@ export default function Auth() {
         style={{ marginBottom: 30 }}
       />
 
-      <AuthForm />
+      <AuthForm msg={msg} />
 
       <div className="authBtns">
         <button name="google" onClick={onSocialHandler} className="authBtn">
