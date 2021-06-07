@@ -30,7 +30,7 @@ function Nav({ UserInfo }) {
 
             <span style={{ marginTop: 10, textAlign: "center" }}>
               {UserInfo.displayName
-                ? `${UserInfo.displayName}의 Profile`
+                ? `${UserInfo.displayName}'s Profile`
                 : "Profile"}
             </span>
           </Link>

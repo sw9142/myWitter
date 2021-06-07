@@ -55,7 +55,7 @@ function AuthForm({ msg }) {
           className="authInput"
         />
         <input
-          type="text"
+          type="password"
           name="Password"
           placeholder="Passoword"
           required
